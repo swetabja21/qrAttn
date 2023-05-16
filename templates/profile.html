@@ -10,6 +10,7 @@
         <div class="w-full flex justify-between items-center py-8">
             <h2 class="font-bold">Your Classes</h2>
             {% if current_user.role == "professor" %}
+                <a href="{{ url_for('auth.locate') }}"><button class="py-2 px-3 text-xl rounded-md hover:shadow-md bg-gray-900 hover:bg-gray-700 text-white">Locate Class</button></a>
                 <a href="{{ url_for('classes.index') }}"><button class="py-2 px-3 text-xl rounded-md hover:shadow-md bg-gray-900 hover:bg-gray-700 text-white">Add class</button></a>
             {% endif %}
         </div>
