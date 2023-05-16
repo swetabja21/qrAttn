@@ -101,6 +101,9 @@ def seek_attendance(cid):
     # check location info of teacher and student
      
     client_ip = request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr)
+    if client_ip != "127.0.0.1" or client_ip != '':
+        client_ip = client_ip.split(",")[0]
+        client_ip = client_ip.strip()
     print(client_ip)
     resp = requests.get(f"http://ip-api.com/json/{client_ip}")
     rjson = resp.json()
