@@ -82,7 +82,7 @@ def seek_attendance(cid):
     print(bool(cl))
     if bool(cl):
         # check if its a valid time to get attendance
-        now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30)))
+        now = datetime.datetime.utcnow() + datetime.timedelta(hours=5, minutes=30)
         if now < cl.startTime or now > cl.endTime:
             flash(
                 f"Attendance for this class only available from {cl.startTime} to {cl.endTime}"
