@@ -30,7 +30,7 @@
             </div>
             {% for entry in attendance %}
                 <div class="flex justify-between items-center">
-                    <span>{{ loop.index }}</span> <span>{{ entry["name"] }}</span> <span>{{ "present" if entry["present"] else "absent" }}</div>
+                    <span>{{ loop.index }}</span> <span>{{ entry["name"] }}</span> <span>{{ "present" if entry["present"] else "absent" }}
                 </div>
             {% endfor %}
         </div>
