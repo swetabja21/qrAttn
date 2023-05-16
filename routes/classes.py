@@ -154,7 +154,7 @@ def class_post():
     db.session.add(cl)
     db.session.flush()
     # create the qr code
-    url = pyqrcode.create(f"http://localhost:5000/class/{cl.id}/seek")
+    url = pyqrcode.create(f"https://qrattn.onrender.com/class/{cl.id}/seek")
     image_as_str = url.png_as_base64_str(scale=5)
     base64_png = f"data:image/png;base64,{image_as_str}"
     cl.qr = base64_png
