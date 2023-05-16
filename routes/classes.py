@@ -3,7 +3,7 @@ from flask import (Blueprint, request, redirect,
                    url_for, render_template, flash)
 from flask_login import login_required, current_user
 import json
-from datetime import datetime
+import datetime
 import pyqrcode
 from models.clas import Class
 from models.user import User
@@ -33,9 +33,9 @@ def get(cid):
 
     try:
         if dt is not None and dt != "":
-            dt = datetime.strptime(dt, "%Y-%m-%d").date()
+            dt = datetime.datetime.strptime(dt, "%Y-%m-%d").date()
         else:
-            dt = datetime.today().date()
+            dt = datetime.datetime.today().date()
     except ValueError as e:
         print(e)
         flash("Date formate should be yyyy/mm/dd", "error")
@@ -82,7 +82,7 @@ def seek_attendance(cid):
     print(bool(cl))
     if bool(cl):
         # check if its a valid time to get attendance
-        now = datetime.now()
+        now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30)))
         if now < cl.startTime or now > cl.endTime:
             flash(
                 f"Attendance for this class only available from {cl.startTime} to {cl.endTime}"
@@ -139,8 +139,8 @@ def class_post():
         return redirect(url_for("classes.index"))
 
     try:
-        start = datetime.strptime(start, "%d/%m/%y %H:%M")
-        end = datetime.strptime(end, "%d/%m/%y %H:%M")
+        start = datetime.datetime.strptime(start, "%d/%m/%y %H:%M")
+        end = datetime.datetime.strptime(end, "%d/%m/%y %H:%M")
     except ValueError as e:
         print(e)
         flash("Date format should be mm/dd/yy Hour:min:sec")
