@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-8 px-4 flex flex-col justify-center items-center">
+  <h3 class="text-2xl text-center mb-4 font-bold uppercase">Add a class</h3>
+  <div class="w-full max-w-4xl flex justify-center items-center">
+    <form method="POST" action="/class" class="flex flex-col justify-center items-center space-y-4 w-full">
+
+      <div class="w-full">
+        <div class="w-full">
+          <input class="w-full rounded-md hover:shadow-md border py-3 px-2" type="text" name="name" placeholder="Enter class name" autofocus="">
+        </div>
+      </div>
+
+      <div class="w-full">
+        <div class="w-full">
+          <input class="w-full rounded-md hover:shadow-md border py-3 px-2" type="text" name="start" placeholder="Enter start time" autofocus="">
+        </div>
+      </div>
+
+      <div class="w-full">
+        <div class="w-full">
+          <input class="w-full rounded-md hover:shadow-md border py-3 px-2" type="text" name="end" placeholder="Enter end time" autofocus="">
+        </div>
+      </div>
+      <button class="py-2 px-3 text-xl text-white bg-gray-900 rounded-md hover:shadow-md hover:bg-gray-700">Add</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

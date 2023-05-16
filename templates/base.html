@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QrAttn</title>
+</head>
+
+<body>
+  <section class="hero is-primary is-fullheight">
+
+    <div class="w-full py-5 px-4 shadow-lg">
+      <nav class="navbar">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl text-3xl font-bold font-mono">QrAttn</h1>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% for category, message in messages %}
+          <div class="{{ 'bg-red-500' if category == 'error' else 'bg-green-500' }} px-1 py-2 rounded-md shadow-md text-white">
+            {{ message }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+          </div>
+          {% endfor %}
+          {% endwith %}
+          <div id="navbarMenuHeroA" class="navbar-menu">
+            <div class="navbar-end">
+              <a href="{{ url_for('main.index') }}" class="navbar-item mx-2 hover:text-gray-500 text-black">
+                Home
+              </a>
+              {% if current_user.is_authenticated %}
+                <a href="{{ url_for('main.profile') }}" class="navbar-item mx-2 hover:text-gray-500 text-black">
+                    Profile
+                </a>
+                <a href="{{ url_for('auth.logout') }}" class="navbar-item mx-2 hover:text-gray-500 text-black">
+                    Logout
+                </a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}" class="navbar-item mx-2 hover:text-gray-500 text-black">
+                    Login
+                </a>
+                <a href="{{ url_for('auth.signup') }}" class="navbar-item mx-2 hover:text-gray-500 text-black">
+                    Sign Up
+                </a>
+            {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <main class="w-screen h-screen p-2 bg-slate-100">
+      <div class="w-full h-full">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </main>
+  </section>
+  <script src="https://cdn.tailwindcss.com"></script>
+</body>
+
+</html>

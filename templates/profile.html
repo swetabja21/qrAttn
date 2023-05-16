@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-8 px-4">
+    <h1 class="text-2xl text-left font-bold">
+        Welcome, {{ current_user.name }}!
+    </h1>
+
+    <div class="w-full">
+        <div class="w-full flex justify-between items-center py-8">
+            <h2 class="font-bold">Your Classes</h2>
+            {% if current_user.role == "professor" %}
+                <a href="{{ url_for('classes.index') }}"><button class="py-2 px-3 text-xl rounded-md hover:shadow-md bg-gray-900 hover:bg-gray-700 text-white">Add class</button></a>
+            {% endif %}
+        </div>
+        <div class="flex flex-wrap justify-center md:justify-left items-center">
+
+            {% for class in classes %}
+            <a href={{ url_for('classes.get', cid=class.id) }}>
+                    <div class="m-4 rounded-md shadow-md p-3">
+                        <img src="{{ class.qr }}" alt="QR for attendance" class="w-32 rounded-md" >
+                        <p class="font-bold text-sm uppercase">Class: {{ class.name }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

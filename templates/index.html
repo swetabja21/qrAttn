@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="w-full h-full flex justify-center items-center">
+  <div class="w-full max-w-6xl flex justify-center items-center">
+    <div class="flex-1">
+      <p class="text-5xl font-bold uppercase tracking-wider text-left">Attendance Sorted with QR and GPS technology!</p>
+    </div>
+    <div class="flex-1">
+      <p class="text-5xl ">To Know More </p>
+      <a href="{{ url_for('auth.login') }}"><button
+          class="bg-black py-2 px-5 rounded-md shadow text-white">Login</button>
+    </div>
+  </div>
+</main>
+{% endblock %}
