@@ -100,8 +100,10 @@ def seek_attendance(cid):
 
     # check location info of teacher and student
     client_ip = request.remote_addr
+    print(client_ip)
     resp = requests.get(f"http://ip-api.com/json/{client_ip}")
     rjson = resp.json()
+    print(rjson)
     if rjson['status'] == 'fail':
         flash("Invaid IP to take attendance")
         return redirect(url_for("main.profile"))
